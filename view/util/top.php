@@ -84,7 +84,7 @@
 		
 		
         <li class="nav-item" >
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="financeiro">
             <i class="fas fa-fw fa-money-bill-alt"></i>
             <span>Financeiro</span></a>
         </li>
@@ -110,8 +110,8 @@
 			  </ul>
 
 			</nav>
-			<div class="container-fluid">          
-			  <ol class="breadcrumb">
+			<div class="container-fluid"> 
+			  <ol class="breadcrumb" style="margin-top:15px;">
 					<li class="breadcrumb-item">
 					  <a href="#"><?=$page?></a>
 					</li>

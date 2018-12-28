@@ -12,7 +12,7 @@
 	$total=0;
 	$vendas = $dao_venda->buscarPorData($data,$dataFinal);
 ?>
-     <div class="container">
+     <div id="content-wrapper">
 		<div class="card mb-3 mx-5">
             <div class="card-header">
               <i class="fas fa-table"></i>

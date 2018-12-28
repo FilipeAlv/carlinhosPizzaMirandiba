@@ -40,6 +40,22 @@
 			$venda_produto = new VendaProduto($linha['id'],$linha['quantidade'],$linha['produto_id'],$linha['venda_id']);
 			return $venda_produto->getId();
 		}
+		
+		public function buscarPorVenda($id){
+			$lista = $this->conexao->executarQuery("SELECT * FROM venda_produto WHERE venda_id = $id");
+			$arrayVendaProdutos = array();
+			
+			while ($linha = mysqli_fetch_array($lista)) {
+				$venda_produto = new VendaProduto($linha['id'],$linha['quantidade'],$linha['produto_id'],$linha['venda_id']);
+				array_push($arrayVendaProdutos,$venda_produto);
+			}
+			return $arrayVendaProdutos;
+		}
+		
+		public function deleteProduto($venda_id, $produto_id){
+			$this->conexao->executarQuery("DELETE FROM venda_produto WHERE venda_id = $venda_id AND produto_id = $produto_id");
+		}
+			
 	}
 	
 ?>

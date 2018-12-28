@@ -16,9 +16,10 @@
 		public function cadastrarEstoque(Estoque $estoque){
 			$produto_id = $estoque->getProdutoId();
 			$quantidade = $estoque->getQuantidade();
+			$medida = $estoque->getMedida();
 			
 
-			$sql = "INSERT INTO estoque (produto_id, quantidade) VALUES ('$produto_id', '$quantidade')";
+			$sql = "INSERT INTO estoque (produto_id, quantidade, medida) VALUES ('$produto_id', '$quantidade', '$medida')";
 			$this->conexao->executarQuery($sql);
 		}
 			
@@ -27,7 +28,7 @@
 			$arrayEstoques = array();
 			
 			while ($linha = mysqli_fetch_array($lista)) {
-				$estoque = new Mesa($linha['id'],$linha['produto_id'], $linha['quantidade']);
+				$estoque = new Estoque($linha['id'],$linha['produto_id'], $linha['quantidade'], $linha['medida']);
 				array_push($arrayEstoques,$estoque);
 			}
 			return $arrayEstoques;

@@ -11,9 +11,10 @@
    $dao->updateStatus($_GET['mesa_id'], "ocupada");
    
    $objetoVenda = new Venda ();
+   $mesa_id = $_GET['mesa_id'];
    $objetoVenda->setValor($_GET['valor']);
    $objetoVenda->setTipo($_GET['tipo']);
-   $objetoVenda->setMesaId($_GET['mesa_id']);
+   $objetoVenda->setMesaId($mesa_id);
    $objetoVenda->setFuncionarioId(1);
    $objetoVenda->setDataHora(date('Y-m-d H:i:s'));
 		
@@ -31,7 +32,10 @@
 	  $dao->cadastrarVendaProduto($objetoVendaProduto);
    }         
    
-   header('Location: ../view/venda/nova');
-	
+   if(isset($_GET['venda'])){
+		header("Location: ../view/mesa/detalhes.php?id_mesa=$mesa_id");
+   }else{
+		header('Location: ../view/venda/nova');
+   }
 	exit;
 ?>

@@ -52,11 +52,27 @@ input[type=text], input[type=password] {
     font-size: 35px;
     font-weight: bold;
 }
+
+
 .close:hover,.close:focus {
     color: red;
     cursor: pointer;
 }
 
+.delete {
+    right: 25px;
+    color: #00f;
+    font-size: 25px;
+    font-weight: bold;
+}
+.delete:hover,.delete:focus {
+    color: #f00;
+    cursor: pointer;
+}
+
+.modal-cont-delete{
+	 margin: 15% auto 12% auto;
+}
 /* Add Zoom Animation */
 .animate {
     animation: zoom 0.6s
@@ -77,19 +93,29 @@ label{
   <div class="modal-content animate" >
         
     <div class="imgcontainer">
-      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-      <h1 style="text-align:center">Finalizar Venda</h1>
+      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Fechar">&times;</span>
+      <h3 style="text-align:center;">Produtos</h3>
     </div>
 
-    <div class="container">
-      <label>Tipo:</label>
-	  <input type="text" name="tipopop" id="tipopop">
-      <label>Mesa:</label>
-	  <input type="text" name="mesapop" id="mesapop">        
-      <label>Valor:</label>
-	  <input type="text" name="valorpop" id="valorpop"> 
-	  <input type="button" class="btn btn-primary btn-block" value="Finalizar" onclick="cadastrar()">
-	  
+    <div id="edit" class="container">
+      	  
+    </div>
+    
+  </div>
+  
+</div>
+
+<div id="modal-deletar" class="modal">
+  
+  <div class="modal-content animate modal-cont-delete" >
+        
+    <div class="imgcontainer">
+      <h5 style="text-align:center;">Tem certeza que dezeja excluir este produto?</h5>
+    </div>
+    <div id="edit" class="container"  style="text-align:center;">
+      	 <input id="buttomsim" type="buttom" value="Sim" class="btn btn-primary">
+		 <input type="buttom" value="Não" class="btn btn-primary" onclick="document.getElementById('modal-deletar').style.display='none'">
+		 
     </div>
     
   </div>

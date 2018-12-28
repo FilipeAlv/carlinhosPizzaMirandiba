@@ -5,7 +5,7 @@
 		private $venda_id;
 		private $produto_id;
 		
-		public function __construct($id=0, $quantidade=0,$venda_id=0, $produto_id=0){
+		public function __construct($id=0, $quantidade=0, $produto_id=0,$venda_id=0){
 			$this->id = $id;
 			$this->quantidade = $quantidade;
 			$this->venda_id = $venda_id;

@@ -10,7 +10,7 @@
 ?>
 
 
-    <div class="container">
+    <div id="content-wrapper">	
 		<div class="card mx-5 mb-5">
 			<div class="card-header">Novo Funcionario</div>
 			<div class="card-body">

@@ -12,7 +12,8 @@
     $produtos = $dao_produto->listarProdutos();
     $dao_mesa = new DAOMesa();
     $mesas = $dao_mesa->listarMesas();
-	include 'pop.html';
+	$venda_id=0;
+	include 'pop.php';
 ?>
 	
     <script>
@@ -46,22 +47,31 @@
 			alert("Venda Realizada com Sucesso!");
 			
 		}
+		
+		function confirm(idvenda){
+			window.location.href="<?=$controller?>cadastrar_venda.php?"+compUrl+"&valor="+valor+"&venda="+idvenda;
+			alert("Venda Realizada com Sucesso!");
+		}
 	</script>
-
     <div class="container">
 		<div class="card mx-5 mb-5">
 			<div class="card-header">Nova Venda</div>
 			<div class="card-body">
-				<form method="post">
+				<form>
 				
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-12">
 								<div class="form-label-group">
 									<select id="tipo" name="tipo" class="form-control" required="required">
-										<option value="" disabled selected>Selecione o tipo de venda...</option>
-										<option value="mesa">Mesa</option>
-										<option value="delivery">Delivery</option>
+										<?php if(isset($_GET['mesa_id'])){
+											$mesa_id = $_GET['mesa_id'];
+											echo "<option value='mesa'>mesa</option>";
+										}else{?>
+											<option value="" disabled selected>Selecione o tipo de venda...</option>
+											<option value="mesa">Mesa</option>
+											<option value="delivery">Delivery</option>
+										<?php } ?>
 									</select>
 								</div>
 							</div>
@@ -72,14 +82,22 @@
 							<div class="col-md-12">
 								<div class="form-label-group">
 									<select id="mesa" name="mesa" class="form-control">
-										<option value="" disabled selected>Selecione a mesa...</option>
-										<?php
-											foreach($mesas as $mesa){
-										?>
+										<?php if(isset($_GET['mesa_id'])){
+											$mesa_id = $_GET['mesa_id'];
+											$venda_id = $_GET['venda_id'];
+											$numMesa = $dao_mesa->buscarPorId($mesa_id);
+											$numMesa = $numMesa->getNumero();
+											echo "<option value='$mesa_id'>$numMesa</option>";
+										}else{?>
+											<option value="" disabled selected>Selecione a mesa...</option>
+											<?php
+												foreach($mesas as $mesa){
+											?>
 												<option value="<?=$mesa->getId()?>" <?php if($mesa->getStatus()!="livre"){?> style="color:#cc0000"<?php } ?>><?=$mesa->getNumero()?></option>
-										<?php
+											<?php
+												}
 											}
-										?>
+											?>
 									</select>
 								</div>
 							</div>
@@ -121,7 +139,7 @@
 							</div>
 						</div>
 					</div>
-					<input type="button" class="btn btn-primary btn-block" value="Confirmar" onclick="confirmar()">
+					<input type="button" class="btn btn-primary btn-block" value="Confirmar" onclick='confirmar()'>
 			  </form>
 			</div>
 		</div>	

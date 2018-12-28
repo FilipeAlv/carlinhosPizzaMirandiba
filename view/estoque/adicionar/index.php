@@ -13,7 +13,7 @@
 		<div class="card mx-5 mb-5">
 			<div class="card-header">Adicionar Produtos ao Estoque</div>
 			<div class="card-body">
-				<form action="../../../controller/adicionar_produto.php" method="post">
+				<form action="../../../controller/cadastrar_estoque.php" method="post">
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-12">

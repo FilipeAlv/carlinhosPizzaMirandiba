@@ -3,11 +3,13 @@
 		private $id;
 		private $quantidade;
 		private $produto_id;
+		private $medida;
 		
-		public function __construct($id=0, $quantidade=0,$produto_id=0){
+		public function __construct($id=0, $quantidade=0,$produto_id=0, $medida=""){
 			$this->id = $id;
 			$this->quantidade = $quantidade;
 			$this->produto_id = $produto_id;
+			$this->medida = $medida;
 		}
 		
 		public function getId(){
@@ -19,7 +21,14 @@
 		public function getProdutoId(){
 			return $this->produto_id;
 		}
+		public function getMedida(){
+			return $this->medida;
+		}
 		
+		
+		public function setMedida($medida){
+			$this->medida = $medida; 
+		}
 		
 		public function setId($id){
 			$this->id = $id; 
